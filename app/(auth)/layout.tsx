@@ -6,7 +6,7 @@ export default function AuthLayouyt({ children, }: Readonly<{ children: React.Re
             <div className="place-content-center place-self-center placed-item-center text-center">
                 <div className="flex flex-col items-center bottom-10 relative">
                     <Image
-                        src="/OXXO-Logo.png"
+                        src="/Oxxo_Logo.png"
                         alt="Logo de Ocso"
                         width={250}
                         height={0} />
