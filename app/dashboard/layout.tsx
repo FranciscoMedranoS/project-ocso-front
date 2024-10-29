@@ -1,7 +1,6 @@
 import Header from "./components/Header";
 import Sidebar from "./components/_sidebar/Sidebar";
 
-
 export default function LayoutDashboard({
   children,
   locations,

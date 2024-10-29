@@ -1,4 +1,3 @@
-
 import { API_URL, TOKEN_NAME } from "@/constants";
 import { Location } from "@/entities";
 import { Card, CardBody, CardHeader, Divider } from "@nextui-org/react";
@@ -23,13 +22,21 @@ export default async function LocationCard({
         <b className="w-full">{data.locationName}</b>
       </CardHeader>
       <Divider></Divider>
-      <CardBody>
+      <CardBody className="flex flex-col w-full items-center">
         <p className="w-full">
           Manager:
           <Link href={{ pathname: `dashboard/managers` }}>
             <b> {data.manager?.managerFullName}</b>
           </Link>
         </p>
+        <p className="w-full">
+          Dirección: <b>{data.locationAddress}</b>
+        </p>
+        <iframe
+          width="300"
+          height="200"
+          src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyA1ecwUo-w3Bi8uc9c7isE-lhIRsmShN6c&q= ${data.locationLatLng[0]}, ${data.locationLatLng[1]}`}>
+        </iframe>
       </CardBody>
     </Card>
   );

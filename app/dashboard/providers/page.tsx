@@ -1,5 +1,5 @@
 const ProviderPage = () => {
-    return null
-}
-
-export default ProviderPage
+    return null;
+  };
+  
+  export default ProviderPage;

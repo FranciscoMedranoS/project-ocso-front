@@ -11,6 +11,7 @@ export default function SelectLocations({
   store: string | string[] | undefined;
 }) {
   const router = useRouter();
+  
   return (
     <Select
       placeholder="Selecciona una tienda"
@@ -29,7 +30,11 @@ export default function SelectLocations({
     >
       {locations.map((location: Location) => {
         return (
-          <SelectItem key={location.locationId} value={location.locationId}>
+          <SelectItem
+            key={location.locationId}
+            value={location.locationId}
+            textValue={location.locationName}
+          >
             {location.locationName}
           </SelectItem>
         );
