@@ -3,13 +3,18 @@ import { Select, SelectItem } from "@nextui-org/react"
 import { Manager } from "@/entities"
 import { Location } from "@/entities"
 
-export default function SelectManager({ manager, locations }: { manager: Manager[], locations: Location[] }) {
+interface SelectManagerProps{
+    manager:Manager[],
+    locations: Location[],
+    defaultManagers?: string;
+}
+export default function SelectManager({ manager, locations, defaultManagers }: SelectManagerProps) {
     const disabledkeys = locations.map((location: Location) => {
         return location.manager?.managerId
     }).filter((managerId) => managerId !== undefined)
     
     return (
-        <Select label="Manager" name="manager" disabledKeys={disabledkeys}>
+        <Select defaultSelectedKeys={defaultManagers != undefined ? [defaultManagers] : []} label="Manager" name="manager" disabledKeys={disabledkeys}>
             {manager.map((manager: Manager) => {
                 return (
                     <SelectItem 
