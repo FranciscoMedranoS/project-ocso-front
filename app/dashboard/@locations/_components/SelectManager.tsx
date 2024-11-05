@@ -10,7 +10,7 @@ interface SelectManagerProps{
 }
 export default function SelectManager({ manager, locations, defaultManagers }: SelectManagerProps) {
     const disabledkeys = locations.map((location: Location) => {
-        return location.manager?.managerId
+        if(location.manager?.managerId != defaultManagers) return location.manager?.managerId
     }).filter((managerId) => managerId !== undefined)
     
     return (

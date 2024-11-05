@@ -16,13 +16,13 @@ const LocationsPage = async ({
 }) => {
   const response = await fetch(`${API_URL}/locations`, {
     headers: {
-      ... authHeaders()
+      ...authHeaders()
     },
-    next:{
-      tags:["dashboard:locations"]
+    next: {
+      tags: ["dashboard:locations"]
     }
   });
-  let data : Location[]= await response.json()
+  let data: Location[] = await response.json()
   data = [
     {
       locationId: 0,
@@ -45,15 +45,17 @@ const LocationsPage = async ({
           <LocationCard store={searchParams.store}></LocationCard>
         </div>
         <div className="w-6/12">
-          <FormNewLocation store={searchParams.store}/>
+          <FormNewLocation store={searchParams.store} />
         </div>
-        <DeleteLocationButton store= {searchParams.store}/>
-        <UpdateLocation>
-          <FormUpdateLocation store={searchParams.store}/>
-        </UpdateLocation>
+        <div className="flex flex-row flex-grow-0 gap-10 items-center ">
+          <DeleteLocationButton store={searchParams.store} />
+          <UpdateLocation store={searchParams.store}>
+            <FormUpdateLocation store={searchParams.store} />
+          </UpdateLocation>
+        </div>
       </div>
     </div>
-  ); 
+  );
 };
 
 export default LocationsPage;
