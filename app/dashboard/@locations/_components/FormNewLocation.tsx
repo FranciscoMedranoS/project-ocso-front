@@ -11,8 +11,6 @@ export default async function FormNewLocation({ store }: { store: string | strin
     if (store) return null
     const responseManagers = await fetch(`${API_URL}/managers`, {
         headers: {
-
-            
             ...authHeaders()
         },
         next: {
@@ -20,6 +18,8 @@ export default async function FormNewLocation({ store }: { store: string | strin
         }
     })
     const dataManagers: Manager[] = await responseManagers.json()
+  
+    
     const responseLocations = await fetch(`${API_URL}/locations`, {
         headers: {
             ...authHeaders()

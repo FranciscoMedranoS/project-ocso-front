@@ -12,6 +12,7 @@ export default function SelectManager({ manager, locations, defaultManagers }: S
     const disabledkeys = locations.map((location: Location) => {
         if(location.manager?.managerId != defaultManagers) return location.manager?.managerId
     }).filter((managerId) => managerId !== undefined)
+   
     
     return (
         <Select defaultSelectedKeys={defaultManagers != undefined ? [defaultManagers] : []} label="Manager" name="manager" disabledKeys={disabledkeys}>
