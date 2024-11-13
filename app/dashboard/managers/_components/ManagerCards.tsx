@@ -5,28 +5,26 @@ import { Card, CardBody, CardHeader, Divider } from "@nextui-org/react";
 import Link from "next/link";
 
 export default async function ManagerCards() {
-    const response = await fetch(
-        `${API_URL}/managers`,
+    const response = await fetch(`${API_URL}/managers`,
         {
             method: "GET",
             headers: { ...authHeaders() },
             next: {
-                tags: ["dashboard:locations:mangers"]
+                tags: ["dashboard:mangers"]
             }
         }
     );
     const data: Manager[] = await response.json()
-    return data.map((manager: Manager) => {
-
+    return data?.map((manager: Manager) => {
         return (
-            <Link href={{ pathname: `/dashboard/managers   /${manager.managerId}` }}>
-                <Card className="mx-10 my-10">
+            <Link href={{ pathname: `/dashboard/managers/${manager.managerId}` }}>
+                <Card className="mx-10 my-10 hover:scale-[110%] hover:bg-blue-100">
                     <CardHeader>
                         <p className="w-full">
                             Nombre: <b>{manager.managerFullName}</b>
                         </p>
                     </CardHeader>
-                    <Divider></Divider>
+                    <Divider/>
                     <CardBody>
                         <p className="w-full">
                             Email: <b>{manager.managerEmail}</b>

@@ -7,9 +7,6 @@ import { authHeaders } from "@/helpers/authHeaders";
 import { Manager, Location } from "@/entities";
 
 
-
-
-
 export default async function FormNewLocation({ store }: { store: string | string[] | undefined }) {
     if (!store || store == undefined || typeof store == "object") return null
     const updateWithStoreId = updateLocation.bind(null, store)
