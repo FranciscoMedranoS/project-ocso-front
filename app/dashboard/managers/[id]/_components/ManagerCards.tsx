@@ -1,27 +1,35 @@
 import { Card, CardBody, CardHeader, Divider } from '@nextui-org/react';
 import { Manager } from '@/entities';
+import Link from 'next/link';
 
 export default async function ManagerCards({ manager }: { manager: Manager }) {
     return (
-        <Card className="mx-20 py-2 ">
+        <Card className="mx-20 py-2 text-center">
             <CardHeader>
                 <p className="w-full">
-                    Nombre: <b>{manager.managerFullName}</b>
+                    <b className='text-4xl'>{manager.managerFullName}</b>
                 </p>
             </CardHeader>
             <Divider />
-            <CardBody>
-                <p className="w-full">
-                    Email: <b>{manager.managerEmail}</b>
-                </p>
-                <p className="w-full">
-                    Teléfono: <b>{manager.managerPhoneNumber}</b>
-                </p>
+            <CardBody className='flex flex-row flex-grow-0 items-center gap-10 justify-center'>
+                <div className="flex flex-col text-lg">
+                    <p className='W-full'>
+                        Email: <b>{manager.managerEmail}</b>
+                    </p>
+                    <p className="w-full">
+                        Teléfono: <b>{manager.managerPhoneNumber}</b>
+                    </p>
+                    <p className={manager.location ? "" : "hidden"}>
+                        Tienda:  <Link href={{
+                            pathname: `/dashboard`,
+                            query: { store: manager.location?.locationId }
+                        }}><b>{manager?.location?.locationName}</b></Link>
+                    </p>
+                </div>
                 {manager.location ? (
+
                     <>
-                        <p>
-                            Tienda: <b>{manager.location.locationName}</b>
-                        </p>
+
                         <iframe
                             className="border-2 border-orange-800 rounded-md my-2"
                             width="300"
@@ -29,7 +37,7 @@ export default async function ManagerCards({ manager }: { manager: Manager }) {
                             src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyA1ecwUo-w3Bi8uc9c7isE-lhIRsmShN6c&q=${manager.location.locationLatLng[0]},${manager.location.locationLatLng[1]}`}>
                         </iframe>
                     </>
-                ) : (<p>No tiene tienda</p>)
+                ) : (<p className='w-ful text-4xl'>No tiene tienda</p>)
                 }
             </CardBody>
         </Card>
