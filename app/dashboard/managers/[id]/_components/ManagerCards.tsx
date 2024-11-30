@@ -19,11 +19,14 @@ export default async function ManagerCards({ manager }: { manager: Manager }) {
                     <p className="w-full">
                         Teléfono: <b>{manager.managerPhoneNumber}</b>
                     </p>
-                    <p className={manager.location ? "" : "hidden"}>
-                        Tienda:  <Link href={{
+                    <p className="w-full">Salario: <b>{manager.managerSalary}</b></p>
+
+                    <p className={manager.location ? "" : "hidden"} >
+                        Tienda: {" "}
+                         <Link href={{
                             pathname: `/dashboard`,
                             query: { store: manager.location?.locationId }
-                        }}><b>{manager?.location?.locationName}</b></Link>
+                        }}><b className='underline'>{manager?.location?.locationName}</b></Link>
                     </p>
                 </div>
                 {manager.location ? (

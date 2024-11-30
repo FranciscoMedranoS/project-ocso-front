@@ -10,27 +10,22 @@ import UpdateManager from "./_components/UpdateManager";
 export default async function ManagerPage({
   params,
 }: {
-  params: {
-    id: string;
-  };
+  params: { id: string };
 }) {
   const response = await fetch(`${API_URL}/managers/${params.id}`, {
-    headers: {
-      ...authHeaders(),
-    },
-    next: {
-      tags: ["dashboard:managers", `dashboard:managers:${params.id}`],
-    },
+    method: "GET",
+    headers: { ...authHeaders() },
+    next: { tags: [`dashboard:managers:${params.id}`, "dashboard:managers"] },
   });
   const data: Manager = await response.json();
   return (
     <div className="flex flex-col gap-10 flex-grow-0 items-center justify-center">
-      <ManagerCards manager={data} />
-      <div className="bg-gray-50 rounded-md px-10 py-2">
+      <ManagerCards manager={data}></ManagerCards>
+      <div className="bg-white shadow-md rounded-md px-10 py-2 flex flex-row flew-grow-0 gap-2">
         <UpdateManager>
           <FormUpdateManager manager={data} />
         </UpdateManager>
-        <DeleteManagerButton managerId={data.managerId}/>
+        <DeleteManagerButton managerId={data.managerId}></DeleteManagerButton>
       </div>
     </div>
   );
