@@ -8,6 +8,7 @@ export default function Sidebar() {
       <NavItem
         icon={<LuTruck className="text-4xl" />}
         path="/dashboard/providers"
+    
       />
       <NavItem
         icon={<LuWheat className="text-4xl" />}

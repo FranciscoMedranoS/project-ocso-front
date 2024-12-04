@@ -3,8 +3,6 @@ import { authHeaders } from "@/helpers/authHeaders";
 import ProviderCard from "./_components/ProviderCard";
 import { Provider } from "@/entities";
 import Link from "next/link";
-import { Button } from "@nextui-org/react";
-import { LuPlus } from "react-icons/lu";
 import CreateProvider from "./_components/CreateProvider";
 import FormCreateProvider from "./_components/FormCreateProvider";
 
@@ -12,6 +10,9 @@ const ProviderPage = async () => {
   const response = await fetch(`${API_URL}/provider`, {
     headers: {
       ...authHeaders(),
+    }, 
+    next: {
+      tags: ["dashboard:providers"]
     }
   })
   const providers: Provider[] = await response.json()
