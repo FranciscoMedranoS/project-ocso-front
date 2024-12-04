@@ -18,6 +18,7 @@ export default async function ProductPage({ params }: {
         }
     })
     const product: Product = await responseProduct.json()
+    
     const responseProviders = await fetch(`${API_URL}/provider`, {
         headers: {
             ...authHeaders()
